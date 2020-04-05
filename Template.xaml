@@ -33,31 +33,24 @@
         </div>
         </nav>
     </Html>
-    <Html>
-        <style>
-            .error-message {
-                position: absolute;
-                z-index:1000;
-                border:4px solid orange;
-                padding:5px;
-                background:white;
-                right:10px;
-                top:10px;
-                left:10px;
-            }
-        </style>
-        <div class="error-message" id="errorMessage" style="display:none">
-            <b>Error:</b><br>
-            <div id="errorMessageContent">
-            </div>
-        </div>
-    </Html>
 
     <Alert Type="info">This is some alert</Alert>
 
     <Repeat Count="10">
-        <Note Title="Atom" Image="https://images-na.ssl-images-amazon.com/images/I/91IxjuCDw8L._AC_SL1500_.jpg">
+        <Note>
+            <X.Title>Atom</X.Title>
+            <X.Image>https://images-na.ssl-images-amazon.com/images/I/91IxjuCDw8L._AC_SL1500_.jpg</X.Image>
+            <Note.Text>
+                This is just a text
+            </Note.Text>
             <Button Color="primary">Buy</Button>
+
+            <Form Method="Post">
+                <Entery Type="Text" Field="firstName" Title="First Name" />
+                <Entery Type="Text" Field="lastName" Title="Last Name"/>
+                <Entery Type="Email" Field="email" Title="Email" />
+                <Button Color="primary">Save</Button>
+            </Form>
         </Note>
     </Repeat>
 
@@ -65,7 +58,7 @@
         <Entery Type="Text" Field="firstName" Title="First Name" />
         <Entery Type="Text" Field="lastName" Title="Last Name"/>
         <Entery Type="Email" Field="email" Title="Email" />
-        <!-- <Button Color="primary">Save</Button> -->
+        <Button Color="primary">Save</Button>
     </Form>
 
     <Table Title="Users" Rows="5" />

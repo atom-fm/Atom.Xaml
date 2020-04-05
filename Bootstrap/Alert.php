@@ -1,3 +1,3 @@
-<div class="alert alert-<?= $this->type ?>" role="alert">
-    <?= $this->content() ?>
+<div class="alert alert-<?= $view->type ?>" role="alert">
+    <?= $view->content ?>
 </div>

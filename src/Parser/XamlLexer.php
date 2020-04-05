@@ -9,6 +9,8 @@ class XamlLexer extends Lexer
     private $state = States::StartState;
     private $stack;
 
+    private const Identifier = "/[.a-zA-Z]/";
+
     public function __construct()
     {
         $this->stack = new \SplStack();
@@ -28,7 +30,7 @@ class XamlLexer extends Lexer
 
     public function readIdentifier(): Token
     {
-        $this->skipWs()->takeWhileMatches("/[.a-zA-Z]/");
+        $this->skipWs()->takeWhileMatches(self::Identifier);
         return $this->emit(TokenTypes::Identifier);
     }
 
@@ -160,13 +162,13 @@ class XamlLexer extends Lexer
                         $this->advance(3);
                         $this->ignore();
                     } else {
-                        throw new RuntimeException("Can't find closing tag for $tag.");
+                        throw new RuntimeException("Missing comment closing tag.");
                     }
                     $this->state = $this->getNextState();
                 } break;
 
                 default: {
-                    $text = $this->text(10);
+                    $text = $this->text(20);
                     throw new RuntimeException("Unexpected token near $text.");
                 } break;
             }

@@ -2,20 +2,28 @@
 
 namespace Atom\Xaml;
 
-use Atom\Xaml\Controls\Control;
 use ReflectionClass;
 use RuntimeException;
 use Atom\Xaml\Parser\Node;
+use Atom\Xaml\Controls\Control;
 use Atom\Xaml\Parser\XamlLexer;
 use Atom\Xaml\Parser\XamlParser;
+use Atom\Xaml\Component\Component;
 use Atom\Xaml\Interfaces\IComponentContent;
+use Atom\Xaml\Interfaces\IComponentProvider;
+use Atom\Xaml\Interfaces\IComponentTemplate;
 use Atom\Xaml\Interfaces\IComponentContainer;
 use Atom\Xaml\Interfaces\IComponentAttributes;
-use Atom\Xaml\Interfaces\IComponentTemplate;
 
 class XamlBuilder
 {
     private $components = [];
+    private $providers = [];
+
+    public function addProvider(IComponentProvider $provider): void
+    {
+        $this->providers[] = $provider;
+    }
 
     public function component(string $name, string $class)
     {
@@ -43,31 +51,38 @@ class XamlBuilder
 
     public function createComponent(Node $node)
     {
-        $type = $this->components[$node->name] ?? null;
+        if ($node->isProperty()) {
+            $instance = new Component();
+            $this->assign($instance, $node);
+            return $instance;
+        } else {
+            $type = $this->components[$node->getName()] ?? null;
 
-        if ($type === null) {
-            throw new RuntimeException("Component {$node->name} is not found.");
-        }
+            if ($type === null) {
+                throw new RuntimeException("Component {$node->getName()} is not found.");
+            }
 
-        if ($this->isTemplate($type)) {
-            $componentFile = $type;
-            $instance = new Control($componentFile);
+            if ($this->isTemplate($type)) {
+                $componentFile = $type;
+                $instance = new Control($componentFile);
+                $this->assign($instance, $node);
+                return $instance;
+            }
+            $reflection = new ReflectionClass($type);
+            $instance = $reflection->newInstance();
             $this->assign($instance, $node);
             return $instance;
         }
-
-        $reflection = new ReflectionClass($type);
-        $instance = $reflection->newInstance();
-        $this->assign($instance, $node);
-        return $instance;
     }
 
     public function assign(object $instance, Node $node)
     {
         if ($instance instanceof IComponentContainer) {
             foreach ($node->getChildNodes() as $childNode) {
-                $child = $this->createComponent($childNode);
-                $instance->addComponent($child);
+                if ($childNode->isComponent()) {
+                    $child = $this->createComponent($childNode);
+                    $instance->addComponent($child);
+                }
             }
         }
 
@@ -82,10 +97,30 @@ class XamlBuilder
             }
         }
 
+        $attributes = $this->getAttributes($node);
+
         if ($instance instanceof IComponentAttributes) {
-            $instance->setAttributes($node->getAttributes());
+            $instance->setAttributes($attributes);
         }
-        $this->setProperties($instance, $node->getAttributes());
+
+        $this->setProperties($instance, $attributes);
+    }
+
+    public function getAttributes(Node $node): array
+    {
+        $attributes = $node->getAttributes();
+        foreach ($attributes as $key => $attribute) {
+            if ($attribute instanceof Node) {
+                if ($attribute->hasChildNodes()) {
+                    $component = new Component();
+                    $this->assign($component, $attribute);
+                    $attributes[$key] = $component;
+                } else {
+                    $attributes[$key] = $attribute->getTextContent();
+                }
+            }
+        }
+        return $attributes;
     }
 
     public function setProperties(object $instance, array $attributes)

@@ -3,6 +3,7 @@
 namespace Atom\Xaml\Controls;
 
 use Atom\Xaml\Component\Component;
+use Atom\Xaml\Component\View;
 use Atom\Xaml\Interfaces\IRenderContext;
 
 class Control extends Component
@@ -16,7 +17,8 @@ class Control extends Component
 
     public function __get($name)
     {
-        return $this->getAttribute($name);
+        $result =  $this->getAttribute($name);
+        return $result;
     }
 
     public function content()
@@ -34,14 +36,14 @@ class Control extends Component
 
     private function renderTemplate(IRenderContext $context): string
     {
-        ob_start();
-        try {
+        $view = new View($this, $context);
+
+        $view->content = $context->renderInContext(function ($context) {
+            parent::render($context);
+        });
+
+        return $context->captureOutput(function () use ($view) {
             include $this->template;
-        } catch (\Error $e) {
-            echo $e->getMessage();
-        }
-        $content = ob_get_contents();
-        ob_clean();
-        return $content;
+        });
     }
 }

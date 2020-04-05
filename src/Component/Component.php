@@ -3,13 +3,15 @@
 namespace Atom\Xaml\Component;
 
 use Atom\Xaml\Interfaces\IRenderContext;
+use Atom\Xaml\Interfaces\IComponentParent;
 use Atom\Xaml\Interfaces\IComponentRender;
 use Atom\Xaml\Interfaces\IComponentContent;
 use Atom\Xaml\Interfaces\IComponentContainer;
 use Atom\Xaml\Interfaces\IComponentAttributes;
 
-class Component implements IComponentContent, IComponentContainer, IComponentAttributes, IComponentRender
+class Component implements IComponentContent, IComponentContainer, IComponentAttributes, IComponentRender, IComponentParent
 {
+    private $parent = null;
     private $attributes = [];
     private $components = [];
     private $textContent = "";
@@ -17,6 +19,16 @@ class Component implements IComponentContent, IComponentContainer, IComponentAtt
     public function getComponents(): array
     {
         return $this->components;
+    }
+
+    public function getParent(): ?object
+    {
+        return $this->parent;
+    }
+
+    public function setParent(object $component): void
+    {
+        $this->parent = $component;
     }
 
     public function setAttributes(array $attributes): void
@@ -61,22 +73,20 @@ class Component implements IComponentContent, IComponentContainer, IComponentAtt
         return false;
     }
 
-    public function renderComponents(IRenderContext $context): bool
+    public function renderComponents(IRenderContext $context): void
     {
-        $didRender = false;
         foreach ($this->components as $component) {
             if ($component instanceof IComponentRender) {
                 $component->render($context);
-                $didRender = true;
             }
         }
-        return $didRender;
     }
 
     public function render(IRenderContext $context): void
     {
-        $didRender = $this->renderComponents($context);
-        if (!$didRender) {
+        if ($this->hasRenderableComponents()) {
+            $this->renderComponents($context);
+        } else {
             $context->write($this->getTextContent());
         }
     }

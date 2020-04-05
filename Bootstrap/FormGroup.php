@@ -1,3 +1,3 @@
 <div class="form-group">
-    <?= $this->content() ?>
+    <?= $view->content ?>
 </div>

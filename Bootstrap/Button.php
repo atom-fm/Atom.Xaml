@@ -1,3 +1,3 @@
-<button type="button" class="btn btn-{{color}}">
-    <?= $this->content() ?>
+<button type="button" class="btn btn-<?= $view->color ?>">
+    <?= $view->content ?>
 </button>

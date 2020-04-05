@@ -60,8 +60,8 @@ class XamlParser
         $attributes = $this->parseAttributes();
         $tok = $this->expect([TokenTypes::CloseTag, TokenTypes::AutoCloseTag]);
 
-        $node->name = $id->token;
-        $node->attributes = $attributes;
+        $node->setName($id->token);
+        $node->setAttributes($attributes);
 
         if ($tok->tokenType == TokenTypes::AutoCloseTag) {
             return $node;
@@ -70,9 +70,9 @@ class XamlParser
         while (!$this->isEof()) {
             $tok = $this->tok();
             if ($tok->tokenType === TokenTypes::OpenTag) {
-                $node->nodes[] = $this->parseComponent();
+                $node->addNode($this->parseComponent());
             } elseif ($tok->tokenType == TokenTypes::Text) {
-                $node->content = $tok->token;
+                $node->setTextContent($tok->token);
                 $this->at++;
             } else {
                 break;
@@ -80,9 +80,10 @@ class XamlParser
         }
 
         $tok = $this->expect([TokenTypes::Identifier]);
+        $name = $node->getName();
 
-        if ($tok->token !== $node->name) {
-            throw new RuntimeException("Closing token tag '{$tok->token}' does not match to open tag {$node->name}.");
+        if ($tok->token !== $name) {
+            throw new RuntimeException("Closing token tag '{$tok->token}' does not match to open tag {$name}.");
         }
         return $node;
     }
