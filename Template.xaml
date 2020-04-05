@@ -1,0 +1,81 @@
+<Page Title = "This is title">
+    <Html>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:20px">
+        <h2><a class="navbar-brand" href="#">Atom Engine</a></h2>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        </nav>
+    </Html>
+    <Html>
+        <style>
+            .error-message {
+                position: absolute;
+                z-index:1000;
+                border:4px solid orange;
+                padding:5px;
+                background:white;
+                right:10px;
+                top:10px;
+                left:10px;
+            }
+        </style>
+        <div class="error-message" id="errorMessage" style="display:none">
+            <b>Error:</b><br>
+            <div id="errorMessageContent">
+            </div>
+        </div>
+    </Html>
+
+    <Alert Type="info">This is some alert</Alert>
+
+    <Repeat Count="10">
+        <Note Title="Atom" Image="https://images-na.ssl-images-amazon.com/images/I/91IxjuCDw8L._AC_SL1500_.jpg">
+            <Button Color="primary">Buy</Button>
+        </Note>
+    </Repeat>
+
+    <Form Method="Post">
+        <Entery Type="Text" Field="firstName" Title="First Name" />
+        <Entery Type="Text" Field="lastName" Title="Last Name"/>
+        <Entery Type="Email" Field="email" Title="Email" />
+        <!-- <Button Color="primary">Save</Button> -->
+    </Form>
+
+    <Table Title="Users" Rows="5" />
+
+    <Code Lang="php" Title="PHP Constructor property promotion">
+        class Point (
+            public float $x = 0.0,
+            public float $y = 0.0,
+            public float $z = 0.0,
+        ) {
+        }
+    </Code>
+</Page>

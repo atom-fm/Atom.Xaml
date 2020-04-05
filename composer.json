@@ -1,0 +1,17 @@
+{
+    "name": "edin/atom-xaml",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Edin Omeragic",
+            "email": "edin.omeragic@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Atom\\Xaml\\": "src/",
+            "Atom\\Xaml\\Tests\\": "tests/"
+        }
+    }
+}
