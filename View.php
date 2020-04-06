@@ -33,6 +33,6 @@
         <div id="errorMessageContent">
         </div>
     </div>
-    <?= $content ?>
+    <?=$content?>
 </body>
 </html>

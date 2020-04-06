@@ -1,4 +1,4 @@
-<Page Title = "This is title">
+<Page Title="$model.title">
     <Html>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:20px">
         <h2><a class="navbar-brand" href="#">Atom Engine</a></h2>
@@ -34,8 +34,21 @@
         </nav>
     </Html>
 
-    <Alert Type="info">This is some alert</Alert>
+    <Alert Type="info" TextContent="$title" Message="$title"/>
 
+    <Repeat Source="$items">
+        <Alert Type="$title" TextContent="$title" Message="$message"/>
+        <Alert Type="$title" TextContent="$title" Message="$message"/>
+
+        <Form Method="Post">
+            <Entery Type="Text" Field="firstName" Title="First Name" />
+            <Entery Type="Text" Field="lastName" Title="Last Name"/>
+            <Entery Type="Email" Field="email" Title="Email" />
+            <Button Color="primary">Save</Button>
+        </Form>
+    </Repeat>
+
+    <!--
     <Repeat Count="10">
         <Note>
             <X.Title>Atom</X.Title>
@@ -53,16 +66,25 @@
             </Form>
         </Note>
     </Repeat>
-
     <Form Method="Post">
         <Entery Type="Text" Field="firstName" Title="First Name" />
         <Entery Type="Text" Field="lastName" Title="Last Name"/>
         <Entery Type="Email" Field="email" Title="Email" />
         <Button Color="primary">Save</Button>
     </Form>
+    -->
+    <!--
+    <List Source="[1,2,3,4]">
+        <List.Empty> List is empty </List.Empty>
+        <Div>
+            <H2></H2>
+            <H2></H2>
+            <H2></H2>
+            <H2></H2>
+        </Div>
+    </List>
 
     <Table Title="Users" Rows="5" />
-
     <Code Lang="php" Title="PHP Constructor property promotion">
         class Point (
             public float $x = 0.0,
@@ -71,4 +93,5 @@
         ) {
         }
     </Code>
+    -->
 </Page>

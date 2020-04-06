@@ -1,3 +1,4 @@
 <div class="alert alert-<?= $view->type ?>" role="alert">
-    <?= $view->content ?>
+    <b> <?= $view->content ?> </b>
+    <b> <?= $view->message ?> </b>
 </div>

@@ -9,7 +9,13 @@ class HotReload
         $list =  iterator_to_array($ri);
 
         $list = array_filter($list, function ($e) {
-            return !$e->isDir() && (strpos($e->getPath(), "vendor") === false);
+            return $e->isFile() &&
+                    (
+                        (strpos($e->getPathName(), "vendor") === false) &&
+                        (strpos($e->getPathName(), ".git") === false) &&
+                        (strpos($e->getPathName(), ".exe") === false)
+                    )
+                   ;
         });
 
         $list = array_map(function ($e) {

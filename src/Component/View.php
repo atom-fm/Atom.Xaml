@@ -15,6 +15,7 @@ class View
     {
         $this->component = $component;
         $this->context = $context;
+        $this->attributes["model"] = $component->getDataContext();
     }
 
     public function __set($name, $value)
@@ -33,7 +34,8 @@ class View
         return $attribute;
     }
 
-    public function has(string $name): bool {
+    public function has(string $name): bool
+    {
         return !empty($this->__get($name));
     }
 }
