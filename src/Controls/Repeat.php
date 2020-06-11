@@ -10,10 +10,11 @@ class Repeat extends Component
     public function render(IRenderContext $context): void
     {
         $source = $this->getAttribute("source");
-
-        foreach ($source as $key => $model) {
-            $this->setDataContext($model);
-            parent::render($context);
+        if (is_iterable($source)) {
+            foreach ($source as $key => $model) {
+                $this->setDataContext($model);
+                parent::render($context);
+            }
         }
     }
 }

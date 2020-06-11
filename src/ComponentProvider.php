@@ -12,7 +12,7 @@ class ComponentProvider implements IComponentProvider
     private $namespaces = [];
     private $cache = [];
 
-    public function findComponent(string $name): array
+    public function findComponent(string $name)
     {
         if (isset($this->cache[$name])) {
             return $this->cache[$name];

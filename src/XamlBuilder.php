@@ -51,28 +51,33 @@ class XamlBuilder
 
     public function createComponent(Node $node)
     {
-        if ($node->isProperty()) {
-            $instance = new Component();
-            $this->assign($instance, $node);
-            return $instance;
-        } else {
-            $type = $this->components[$node->getName()] ?? null;
+        $type = $this->components[$node->getName()] ?? null;
 
-            if ($type === null) {
-                throw new RuntimeException("Component {$node->getName()} is not found.");
+        if ($type === null) {
+            $componentName = $node->getComponentName();
+            foreach ($this->providers as $provider) {
+                if ($provider->hasComponent($componentName)) {
+                    $instance = $provider->createComponent($componentName);
+                    $this->assign($instance, $node);
+                    return $instance;
+                }
             }
+            // $instance = new Component();
+            // $this->assign($instance, $node);
+            // return $instance;
+            throw new RuntimeException("Component {$node->getName()} is not found.");
+        }
 
-            if ($this->isTemplate($type)) {
-                $componentFile = $type;
-                $instance = new Control($componentFile);
-                $this->assign($instance, $node);
-                return $instance;
-            }
-            $reflection = new ReflectionClass($type);
-            $instance = $reflection->newInstance();
+        if ($this->isTemplate($type)) {
+            $componentFile = $type;
+            $instance = new Control($componentFile);
             $this->assign($instance, $node);
             return $instance;
         }
+        $reflection = new ReflectionClass($type);
+        $instance = $reflection->newInstance();
+        $this->assign($instance, $node);
+        return $instance;
     }
 
     public function assign(object $instance, Node $node)

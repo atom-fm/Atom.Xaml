@@ -3,7 +3,6 @@
 namespace Atom\Xaml;
 
 use Closure;
-use SplStack;
 
 final class VDom
 {

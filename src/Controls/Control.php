@@ -21,12 +21,12 @@ class Control extends Component
         return $result;
     }
 
-    public function content()
-    {
-        if ($this->hasRenderableComponents()) {
-        }
-        return $this->getTextContent();
-    }
+    // public function content()
+    // {
+    //     if ($this->hasRenderableComponents()) {
+    //     }
+    //     return $this->getTextContent();
+    // }
 
     public function render(IRenderContext $context): void
     {

@@ -36,55 +36,35 @@
 
     <Alert Type="info" TextContent="$title" Message="$title"/>
 
-    <Repeat Source="$items">
+    <Repeat Source.Bind="$items">
         <Alert Type="$title" TextContent="$title" Message="$message"/>
-        <Alert Type="$title" TextContent="$title" Message="$message"/>
-
-        <Form Method="Post">
-            <Entery Type="Text" Field="firstName" Title="First Name" />
-            <Entery Type="Text" Field="lastName" Title="Last Name"/>
-            <Entery Type="Email" Field="email" Title="Email" />
-            <Button Color="primary">Save</Button>
-        </Form>
     </Repeat>
 
-    <!--
-    <Repeat Count="10">
+    <Repeat Source="$items">
         <Note>
             <X.Title>Atom</X.Title>
             <X.Image>https://images-na.ssl-images-amazon.com/images/I/91IxjuCDw8L._AC_SL1500_.jpg</X.Image>
-            <Note.Text>
-                This is just a text
-            </Note.Text>
+            <X.Text>
+                <Button Color="primary">Buy</Button>
+            </X.Text>
             <Button Color="primary">Buy</Button>
-
-            <Form Method="Post">
-                <Entery Type="Text" Field="firstName" Title="First Name" />
-                <Entery Type="Text" Field="lastName" Title="Last Name"/>
-                <Entery Type="Email" Field="email" Title="Email" />
-                <Button Color="primary">Save</Button>
-            </Form>
         </Note>
+                    <Code Lang="php" Title="PHP Constructor property promotion">
+        class Point (
+            public float $x = 0.0,
+            public float $y = 0.0,
+            public float $z = 0.0,
+        ) {
+        }
+    </Code>
     </Repeat>
     <Form Method="Post">
         <Entery Type="Text" Field="firstName" Title="First Name" />
         <Entery Type="Text" Field="lastName" Title="Last Name"/>
         <Entery Type="Email" Field="email" Title="Email" />
         <Button Color="primary">Save</Button>
-    </Form>
-    -->
-    <!--
-    <List Source="[1,2,3,4]">
-        <List.Empty> List is empty </List.Empty>
-        <Div>
-            <H2></H2>
-            <H2></H2>
-            <H2></H2>
-            <H2></H2>
-        </Div>
-    </List>
 
-    <Table Title="Users" Rows="5" />
+    </Form>
     <Code Lang="php" Title="PHP Constructor property promotion">
         class Point (
             public float $x = 0.0,
@@ -93,5 +73,5 @@
         ) {
         }
     </Code>
-    -->
 </Page>
+

@@ -5,37 +5,10 @@ namespace Atom\Xaml;
 use Atom\Xaml\Interfaces\IComponentContainer;
 use Atom\Xaml\Interfaces\IComponentRender;
 use Atom\Xaml\Interfaces\IRenderContext;
-use SplStack;
 
 class XamlRender implements IRenderContext
 {
     private $content = "";
-    //private $stack;
-
-    public function __construct()
-    {
-        //$this->stack = new SplStack();
-    }
-
-    // public function save(): void
-    // {
-    //     $this->stack->push($this->content);
-    //     $this->content = "";
-    // }
-
-    // public function restore(): string
-    // {
-    //     $changes = $this->content;
-    //     $this->content = $this->stack->pop();
-    //     return $changes;
-    // }
-
-    // public function commit(): bool
-    // {
-    //     $changes = $this->restore();
-    //     $this->write($changes);
-    //     return strlen($changes) > 0;
-    // }
 
     public function write(string $content)
     {
@@ -63,7 +36,7 @@ class XamlRender implements IRenderContext
     {
         $context = $this->createContext();
         $component->render($context);
-        return $this->getContent();
+        return $context->getContent();
     }
 
     public function captureOutput(\Closure $callback, array $params = []): string
