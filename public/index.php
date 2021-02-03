@@ -4,16 +4,16 @@ use Atom\Xaml\XamlRender;
 use Atom\Xaml\XamlBuilder;
 use Atom\Xaml\ComponentProvider;
 
-include "vendor/autoload.php";
+include "../vendor/autoload.php";
 
 
 $builder = new XamlBuilder();
 $componentProvider = new ComponentProvider();
-$componentProvider->addDirectory(__DIR__ ."/Bootstrap");
+$componentProvider->addDirectory(dirname(__DIR__) ."/Bootstrap");
 $componentProvider->addNamespace("Atom\\Xaml\\Controls");
 $builder->addProvider($componentProvider);
 
-$component = $builder->parse(file_get_contents("Template.xaml"));
+$component = $builder->parse(file_get_contents("Template2.xaml"));
 
 class Item
 {
@@ -25,14 +25,6 @@ class Item
         $this->message = $message;
     }
 }
-$b = new XamlBuilder();
-$b->component("Item", Item::class);
-$i = $b->parse("<Item Title=\"Hello\">
-        <Item.Message>Cool</Item.Message>
-    </Item>  ");
-
-print_r($i);
-
 
 class Model
 {

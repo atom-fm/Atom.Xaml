@@ -42,29 +42,28 @@
 
     <Repeat Source="$items">
         <Note>
-            <X.Title>Atom</X.Title>
-            <X.Image>https://images-na.ssl-images-amazon.com/images/I/91IxjuCDw8L._AC_SL1500_.jpg</X.Image>
-            <X.Text>
+            <Note.Title>Atom</Note.Title>
+            <Note.Image>https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg</Note.Image>
+            <Note.Text>
                 <Button Color="primary">Buy</Button>
-            </X.Text>
-            <Button Color="primary">Buy</Button>
+            </Note.Text>
         </Note>
-                    <Code Lang="php" Title="PHP Constructor property promotion">
-        class Point (
-            public float $x = 0.0,
-            public float $y = 0.0,
-            public float $z = 0.0,
-        ) {
-        }
-    </Code>
     </Repeat>
-    <Form Method="Post">
-        <Entery Type="Text" Field="firstName" Title="First Name" />
-        <Entery Type="Text" Field="lastName" Title="Last Name"/>
-        <Entery Type="Email" Field="email" Title="Email" />
-        <Button Color="primary">Save</Button>
 
+    <Form Method="Post">
+        <Entry Type="Text" Field="firstName" Title="First Name" />
+        <Entry Type="Text" Field="firstName" Title="First Name" />
+        <Entry Type="Text" Field="firstName" Title="First Name" />
+        <Entry Type="Text" Field="firstName" Title="First Name" />
+        <Entry Type="Text" Field="firstName" Title="First Name" />
+        <Entry Type="Text" Field="firstName" Title="First Name" />
+        <Entry Type="Text" Field="firstName" Title="First Name" />
+        <Entry Type="Text" Field="firstName" Title="First Name" />
+        <Entry Type="Text" Field="lastName" Title="Last Name"/>
+        <Entry Type="Email" Field="email" Title="Email" />
+        <Button Color="primary">Save</Button>
     </Form>
+
     <Code Lang="php" Title="PHP Constructor property promotion">
         class Point (
             public float $x = 0.0,
@@ -74,4 +73,3 @@
         }
     </Code>
 </Page>
-

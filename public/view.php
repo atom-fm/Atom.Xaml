@@ -10,7 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
-    <script src="hotreload.js" guid="294f372e-874d-443e-82eb-99385889196e"></script>
+    <script src="../hotreload.js" guid="294f372e-874d-443e-82eb-99385889196e"></script>
     <style>
         body { padding: 20px}
     </style>

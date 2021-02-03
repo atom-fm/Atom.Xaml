@@ -5,7 +5,7 @@ namespace Atom\Xaml\Controls;
 use Atom\Xaml\Component\Component;
 use Atom\Xaml\Interfaces\IRenderContext;
 
-class Entery extends Component
+class Entry extends Component
 {
     public $field = "";
     public $title = "";

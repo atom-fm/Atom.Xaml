@@ -1,0 +1,26 @@
+<div xmlns:bs="Atom.Xaml2.Boot">
+    <h2>UI Example</h2>
+    <hr />
+
+    <!-- <bs:Alert type="success"> Hello World </bs:Alert>
+    <bs:Alert type="info">
+        Some lorem ipsum dolores arduino uno
+    </bs:Alert> -->
+
+    <bs:FormGroup >
+        <bs:Entry type="text" label="First Name" class="col-6" />
+        <bs:Entry type="text" label="Last Name"  class="col-6" />
+    </bs:FormGroup>
+
+    <bs:Entry type="email" label="Email" />
+
+    <bs:Entry type="password" label="Password" class="mt-3"/>
+    <bs:Entry type="password" label="Retype Password" />
+
+
+    <bs:Entry type="select" label="User Type" class="my-3"/>
+    <bs:Entry type="checkbox" label="Active" class="my-3" />
+
+    <a class="btn btn-secondary btn-sm" href="?view=index">Back</a>
+
+</div>
