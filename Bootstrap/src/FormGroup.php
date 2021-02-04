@@ -1,8 +1,8 @@
 <?php
 
-namespace Atom\Xaml2\Boot;
+namespace Atom\Bootstrap;
 
-use Atom\Xaml2\Component\Component;
+use Atom\Xaml\Component\Component;
 
 class FormGroup extends Component
 {

@@ -1,0 +1,16 @@
+<div xmlns:bs="Atom.Bootstrap">
+    <h2>Friends</h2>
+    <hr />
+
+    <bs:Alert type="info">
+        Some friends to show
+    </bs:Alert>
+
+    <bs:Repeat rows="27" style="display:flex;flex-wrap: wrap">
+        <bs:Card src="images/random.jpg" title="Card Title" style="margin:5px;flex:1 20%">
+            <a class="btn btn-primary btn-sm" href="?view=edit">View</a>
+        </bs:Card>
+    </bs:Repeat>
+
+
+</div>

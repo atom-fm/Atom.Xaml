@@ -1,9 +1,9 @@
 <?php
 
-namespace Atom\Xaml2\Boot;
+namespace Atom\Bootstrap;
 
-use Atom\Xaml2\Component\Component;
-use Atom\Xaml2\Component\HtmlComponent;
+use Atom\Xaml\Component\Component;
+use Atom\Xaml\Component\HtmlComponent;
 
 class Entry extends Component
 {

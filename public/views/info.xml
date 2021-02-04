@@ -1,0 +1,15 @@
+<div xmlns:bs="Atom.Bootstrap" inherits="layouts.layout">
+    <h2>UI Info Example</h2>
+    <hr />
+
+    <bs:Table class="table table-sm table-hover mt-4" rows="5">
+        <bs:Column title="Id" value="1"/>
+        <bs:Column title="First Name" value=""/>
+        <bs:Column title="Last Name" value=""/>
+        <bs:Column title="Email" value=""/>
+
+        <bs:Column title="Actions" class="actions">
+            <a class="btn btn-sm btn-primary" href="?view=index">Edit</a>
+        </bs:Column>
+    </bs:Table>
+</div>

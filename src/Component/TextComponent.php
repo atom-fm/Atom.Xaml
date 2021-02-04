@@ -1,8 +1,8 @@
 <?php
 
-namespace Atom\Xaml2\Component;
+namespace Atom\Xaml\Component;
 
-class HtmlComponent extends TextComponent
+class TextComponent
 {
     public string $content;
 

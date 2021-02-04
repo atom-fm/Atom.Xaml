@@ -1,0 +1,56 @@
+<div xmlns:bs="Atom.Bootstrap" inherits="layouts.layout">
+    <h2>UI Example</h2>
+    <hr />
+
+    <bs:Alert type="info">
+        Some lorem ipsum dolores <b>arduino</b> uno
+    </bs:Alert>
+
+    <bs:CodeBlock lang="php" title="Some Class" style="margin:4px">
+        namespace App;
+
+        class Point
+        {
+            public int $x;
+            public int $y;
+
+            public function __construct(int $x, int $y)
+            {
+                $this->x = $x;
+                $this->y = $y;
+            }
+        }
+    </bs:CodeBlock>
+
+    <bs:Form title="Create User" method="post">
+        <bs:FormGroup>
+            <bs:Entry type="text" label="First Name" class="col-6" />
+            <bs:Entry type="text" label="Last Name"  class="col-6" />
+        </bs:FormGroup>
+
+        <bs:Entry type="email" label="Email" />
+        <bs:Entry type="password" label="Password" class="mt-3"/>
+        <bs:Entry type="password" label="Retype Password" />
+
+        <bs:Entry type="select" label="User Type" class="my-3"/>
+        <bs:Entry type="checkbox" label="Active" class="my-3" />
+    </bs:Form>
+
+    <bs:Repeat rows="6" style="display:flex;flex-wrap: wrap">
+        <bs:Card src="images/random.jpg" title="Card Title" style="margin:5px;flex:1 20%">
+            <a class="btn btn-primary btn-sm" href="?view=edit">Edit</a>
+        </bs:Card>
+    </bs:Repeat>
+
+    <bs:Table class="table table-sm table-hover mt-4" rows="5">
+        <bs:Column title="Id" value="1"/>
+        <bs:Column title="FirstName" value="Edin"/>
+        <bs:Column title="LastName" value="Omeragic"/>
+        <bs:Column title="Email" value="edin.omeragic@gmail.com"/>
+        <bs:Column title="Actions" style="text-align:right;width:130px">
+            <a class="btn btn-primary btn-sm" href="?view=edit">Edit</a>
+            <a class="btn btn-danger btn-sm" href="?view=delete">Delete</a>
+        </bs:Column>
+    </bs:Table>
+    <bs:Pagination />
+</div>

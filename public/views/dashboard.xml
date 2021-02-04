@@ -1,0 +1,21 @@
+<div xmlns:bs="Atom.Bootstrap">
+    <h2>Dashboard</h2>
+    <hr />
+
+    <bs:Alert type="success">
+        All OK
+    </bs:Alert>
+
+    <bs:Table class="table table-sm table-hover mt-4" rows="5">
+        <bs:Column title="Id" value="1"/>
+        <bs:Column title="FirstName" value="Edin"/>
+        <bs:Column title="LastName" value="Omeragic"/>
+        <bs:Column title="Email" value="edin.omeragic@gmail.com"/>
+        <bs:Column title="Actions" style="text-align:right;width:130px">
+            <a class="btn btn-primary btn-sm" href="?view=edit">Edit</a>
+            <a class="btn btn-danger btn-sm" href="?view=delete">Delete</a>
+        </bs:Column>
+    </bs:Table>
+
+    <bs:Pagination />
+</div>

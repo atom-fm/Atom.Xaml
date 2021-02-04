@@ -1,9 +1,9 @@
 <?php
 
-namespace Atom\Xaml2\Boot;
+namespace Atom\Bootstrap;
 
-use Atom\Xaml2\Component\Component;
-use Atom\Xaml2\Component\HtmlComponent;
+use Atom\Xaml\Component\Component;
+use Atom\Xaml\Component\HtmlComponent;
 
 class Pagination extends Component
 {
@@ -16,13 +16,13 @@ class Pagination extends Component
             <nav>
                 <ul class="pagination justify-content-end">
                     <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
                     </li>
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                     <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                        <a class="page-link" href="#">Next</a>
                     </li>
                 </ul>
             </nav>

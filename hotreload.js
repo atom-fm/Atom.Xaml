@@ -1,5 +1,10 @@
 (function () {
-    const source = new EventSource("http://localhost/AtomParser/hotreload.php");
+    //TODO: Configure url automatically
+    const url = "http://localhost/AtomParser/hotreload.php";
+
+    //alert(window.location.href);
+
+    const source = new EventSource(url);
     const guid = "294f372e-874d-443e-82eb-99385889196e";
     source.onmessage = function (event) {
         const data = JSON.parse(event.data);

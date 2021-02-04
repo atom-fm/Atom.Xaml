@@ -1,8 +1,8 @@
 <?php
 
-namespace Atom\Xaml2\Boot;
+namespace Atom\Bootstrap;
 
-use Atom\Xaml2\Component\Component;
+use Atom\Xaml\Component\Component;
 
 class Table extends Component
 {
@@ -29,15 +29,11 @@ class Table extends Component
             $rows[] = new Component("tr", [], $rowCols);
         }
 
-        return new Component(
-            "table",
-            $this->attributes,
-            [
-                new Component("thead", [], [
-                    new Component("tr", [], $cols)
-                ]),
-                new Component("tbody", [], $rows)
-            ],
-        );
+        return new Component("table", $this->attributes, [
+            new Component("thead", [], [
+                new Component("tr", [], $cols)
+            ]),
+            new Component("tbody", [], $rows)
+        ]);
     }
 }
