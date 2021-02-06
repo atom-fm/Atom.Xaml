@@ -25,6 +25,8 @@
     <link href="style/offcanvas.css" rel="stylesheet">
 
     <?php include __DIR__ . "/highlighter.php" ?>
+    <?php include __DIR__ . "/config.php" ?>
+
 </head>
 
 <body class="bg-light">

@@ -3,7 +3,6 @@
 namespace Atom\Bootstrap;
 
 use Atom\Xaml\Component\Component;
-use Atom\Xaml\Component\Fragment;
 
 class Repeat extends Component
 {
@@ -12,8 +11,9 @@ class Repeat extends Component
     public function render()
     {
         $rows = [];
+
         for ($i = 0; $i < $this->rows; $i++) {
-            $rows[] = new Fragment($this->renderChildren());
+            $rows[] = $this->renderChildren();
         }
 
         return new Component("div", $this->attributes, $rows);

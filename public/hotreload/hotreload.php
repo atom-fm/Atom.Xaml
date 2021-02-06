@@ -10,12 +10,10 @@ class HotReload
 
         $list = array_filter($list, function ($e) {
             return $e->isFile() &&
-                    (
-                        (strpos($e->getPathName(), "vendor") === false) &&
-                        (strpos($e->getPathName(), ".git") === false) &&
-                        (strpos($e->getPathName(), ".exe") === false)
-                    )
-                   ;
+                (
+                    (strpos($e->getPathName(), "vendor") === false) &&
+                    (strpos($e->getPathName(), ".git") === false) &&
+                    (strpos($e->getPathName(), ".exe") === false));
         });
 
         $list = array_map(function ($e) {
@@ -59,4 +57,6 @@ class HotReload
     }
 }
 
-(new HotReload())->run();
+$path = dirname(dirname(__DIR__));
+
+(new HotReload())->run($path);

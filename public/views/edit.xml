@@ -1,8 +1,6 @@
 <bs:Page xmlns:bs="Atom.Bootstrap">
     <h2>UI Example</h2>
-    <hr />
-
-
+    <hr/>
 
     <bs:FormGroup >
         <bs:Entry type="text" label="First Name" class="col-6" />

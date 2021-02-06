@@ -3,7 +3,6 @@
 namespace Atom\Xaml;
 
 use Atom\Xaml\Component\Component;
-use Atom\Xaml\Component\Fragment;
 use Atom\Xaml\Component\TextComponent;
 
 class ViewRenderer
@@ -14,7 +13,8 @@ class ViewRenderer
         $this->renderNode($dom, 0);
     }
 
-    public static function renderComponent($component) {
+    public static function renderComponent($component)
+    {
         $viewRenderer = new ViewRenderer();
 
         if (!is_array($component)) {
@@ -24,14 +24,15 @@ class ViewRenderer
         }
 
         $htmlParts = [];
-        foreach($components as $component) {
+        foreach ($components as $component) {
             $htmlParts[] = $viewRenderer->getContent($component);
         }
 
         return implode("\n", $htmlParts);
     }
 
-    private function getAttributes(Component $node) {
+    private function getAttributes(Component $node)
+    {
         $result = "";
         foreach ($node->getAttributes() as $key => $value) {
             $value = htmlspecialchars($value);
@@ -42,7 +43,7 @@ class ViewRenderer
 
     private function renderNode($node, $level = 0)
     {
-        $prefix = str_repeat(" ", $level*4);
+        $prefix = str_repeat(" ", $level * 4);
 
         if ($node === null) {
             return;
@@ -53,10 +54,10 @@ class ViewRenderer
             return;
         }
 
-        if ($node instanceof Fragment) {
-            $nodes = $node->getNodes();
+        if (is_array($node)) {
+            $nodes = $node;
 
-            foreach($nodes as $node) {
+            foreach ($nodes as $node) {
                 $this->renderNode($node);
             }
 
@@ -70,7 +71,7 @@ class ViewRenderer
         if (count($nodes) > 0) {
             echo "{$prefix}<{$tag}{$attributes}>\n";
             foreach ($nodes as $node) {
-                $this->renderNode($node, $level+1);
+                $this->renderNode($node, $level + 1);
             }
             echo "{$prefix}</{$tag}>\n";
         } else {

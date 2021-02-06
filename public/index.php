@@ -4,6 +4,8 @@ use Atom\Xaml\Loader;
 use Atom\Xaml\ViewRenderer;
 
 include "../vendor/autoload.php";
+include "./config.php";
+
 $viewName = $_GET['view'] ?? "index";
 $viewName = "./views/{$viewName}.xml";
 

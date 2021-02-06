@@ -1,8 +1,5 @@
 (function () {
-    //TODO: Configure url automatically
-    const url = "http://localhost/AtomParser/hotreload.php";
-
-    //alert(window.location.href);
+    const url = window.APP_BASE_URL + "/hotreload/hotreload.php";
 
     const source = new EventSource(url);
     const guid = "294f372e-874d-443e-82eb-99385889196e";
