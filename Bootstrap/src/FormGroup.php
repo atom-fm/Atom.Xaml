@@ -8,7 +8,8 @@ class FormGroup extends Component
 {
     public string $type = "";
 
-    public function render() {
+    public function render()
+    {
         return new Component("div", ["class" => "row"], $this->renderChildren());
     }
 }

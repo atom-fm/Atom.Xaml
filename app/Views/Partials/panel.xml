@@ -1,0 +1,21 @@
+<div xmlns:bs="Atom.Bootstrap">
+   
+    <h2>Partial View</h2>
+    
+    <bs:Alert type="info">
+        This is partial view
+    </bs:Alert>
+    
+    <bs:Alert type="info">
+        This is partial view
+    </bs:Alert>
+    
+    <bs:Alert type="info">
+        This is partial view
+    </bs:Alert>
+
+     <bs:Alert type="info">
+        This is partial view
+    </bs:Alert>
+ 
+</div>

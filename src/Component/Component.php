@@ -2,7 +2,7 @@
 
 namespace Atom\Xaml\Component;
 
-class Component
+class Component extends Element
 {
     protected string $tag;
     protected array $attributes = [];
@@ -18,19 +18,18 @@ class Component
     protected function mergeAttributes(array $attributes)
     {
         $result = $this->getAttributes();
-        foreach($attributes as $key => $value) {
-            switch($key) {
-                case "class": {
+        foreach ($attributes as $key => $value) {
+            switch ($key) {
+                case "class":
                     //TODO: Merge class
                     $result["class"] = $value;
-                } break;
-                case "style": {
+                    break;
+                case "style":
                     //TODO: Merge style
                     $result["style"] = $value;
-                }
-                default: {
+                    break;
+                default:
                     $result[$key] = $value;
-                }
             }
         }
         return $result;
@@ -44,6 +43,13 @@ class Component
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    public function getNodesOfType($classType)
+    {
+        return array_filter( $this->nodes, function($item) use ($classType) {
+            return $item instanceof $classType;
+        }) ;
     }
 
     public function getNodes()
@@ -65,18 +71,22 @@ class Component
         return $result;
     }
 
+    /**
+     * @return mixed
+     */
     public function render()
     {
-        if (strpos($this->tag, ":") !== false ||
+        if (
+            strpos($this->tag, ":") !== false ||
             strpos($this->tag, ".") !== false ||
-            strtolower($this->tag) !== $this->tag) {
+            strtolower($this->tag) !== $this->tag
+        ) {
             return new Component(
                 "div",
                 $this->attributes + ["style" => "border:2px red solid; background:#FFEEEE; padding:5px;text-align:center;margin:5px 0px"],
                 [new HtmlComponent("Missing component <b>{$this->tag}</b>")]
             );
-        } else {
-            return new Component($this->tag, $this->attributes, $this->renderChildren());
         }
+        return new Component($this->tag, $this->attributes, $this->renderChildren());
     }
 }

@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Configure project base url
- */
 define("APP_BASE_URL", "http://localhost/Atom.Xaml/public");
 define("APP_DIR", dirname(__DIR__));
 define("APP_DATABASE_DRIVER", "sqlite");

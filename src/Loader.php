@@ -13,6 +13,11 @@ use ReflectionClass;
 use ReflectionProperty;
 use RuntimeException;
 
+
+class ComponentFactory
+{
+}
+
 class Loader
 {
     private $namespaces = [];
@@ -115,9 +120,8 @@ class Loader
                 $properties = $reflection->getProperties(ReflectionProperty::IS_PUBLIC);
                 $props = [];
 
-                foreach($properties as $property) {
-                    if (isset($attributes[$property->name]))
-                    {
+                foreach ($properties as $property) {
+                    if (isset($attributes[$property->name])) {
                         $value = $attributes[$property->name];
                         $props[$property->name] = $value;
                         unset($attributes[$property->name]);
@@ -125,7 +129,7 @@ class Loader
                 }
                 $newNode = $reflection->newInstance($tagName, $attributes, $nodes);
 
-                foreach($props as $prop => $value) {
+                foreach ($props as $prop => $value) {
                     $newNode->{$prop} = $value;
                 }
 

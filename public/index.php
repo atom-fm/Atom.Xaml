@@ -4,10 +4,10 @@ use Atom\Xaml\Loader;
 use Atom\Xaml\ViewRenderer;
 
 include "../vendor/autoload.php";
-include "./config.php";
+include "../app/config.php";
 
 $viewName = $_GET['view'] ?? "index";
-$viewName = "./views/{$viewName}.xml";
+$viewName = "../app/Views/{$viewName}.xml";
 
 if (is_file($viewName)) {
     $loader = new Loader();
@@ -18,4 +18,4 @@ if (is_file($viewName)) {
     $content = "<h3>Error</h3><div class='alert alert-danger'>Missing file <b>{$viewName}</b></div>";
 }
 
-include "layouts/layout-nav.php";
+include "../app/Layouts/layout-nav.php";

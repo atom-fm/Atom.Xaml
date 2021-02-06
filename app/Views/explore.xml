@@ -1,0 +1,22 @@
+<div xmlns:bs="Atom.Bootstrap">
+    <h2>Explore</h2>
+    <hr />
+
+    <bs:Alert type="info">
+    Still writing "proper code"? What about SQL in your views?
+    </bs:Alert>
+
+    <bs:Query>
+        SELECT * FROM artists LIMIT 10
+    </bs:Query> 
+
+    <bs:DataTable table="artists">
+        <bs:Column field="ArtistId" title="ArtistId" />
+        <bs:Column field="Name" title="Name" />
+        <bs:Column field="Name" title="Name" />
+        <bs:Column field="Name" title="Name" />
+        <bs:Column >
+            <!-- <bs:Button>Edit</bs:Button> -->
+        </bs:Column>
+    </bs:DataTable>
+</div>

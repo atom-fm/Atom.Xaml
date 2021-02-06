@@ -2,80 +2,48 @@
 
 namespace Atom\Xaml;
 
-use Atom\Xaml\Component\Component;
+use Atom\Xaml\Component\HtmlComponent;
 use Atom\Xaml\Component\TextComponent;
 
-class ViewRenderer
+final class ViewRenderer
 {
     public function render($component)
     {
-        $dom = $component->render();
-        $this->renderNode($dom, 0);
+        $element = $component->render();
+        $this->renderRecursive($element, 0);
     }
 
-    public static function renderComponent($component)
+    private function renderRecursive($element, $level = 0)
     {
-        $viewRenderer = new ViewRenderer();
-
-        if (!is_array($component)) {
-            $components = [$component];
-        } else {
-            $components = $component;
-        }
-
-        $htmlParts = [];
-        foreach ($components as $component) {
-            $htmlParts[] = $viewRenderer->getContent($component);
-        }
-
-        return implode("\n", $htmlParts);
-    }
-
-    private function getAttributes(Component $node)
-    {
-        $result = "";
-        foreach ($node->getAttributes() as $key => $value) {
-            $value = htmlspecialchars($value);
-            $result .= " $key=\"$value\"";
-        }
-        return $result;
-    }
-
-    private function renderNode($node, $level = 0)
-    {
-        $prefix = str_repeat(" ", $level * 4);
-
-        if ($node === null) {
+        if ($element === null) {
             return;
         }
 
-        if ($node instanceof TextComponent) {
-            echo $prefix, trim($node->content), "\n";
-            return;
-        }
+        $ident = str_repeat(" ", $level * 4);
 
-        if (is_array($node)) {
-            $nodes = $node;
-
-            foreach ($nodes as $node) {
-                $this->renderNode($node);
+        if (is_array($element)) {
+            $elements = $element;
+            foreach ($elements as $element) {
+                $this->renderRecursive($element);
             }
-
-            return;
-        }
-
-        $attributes = $this->getAttributes($node);
-        $tag = $node->getTag();
-        $nodes = $node->getNodes();
-
-        if (count($nodes) > 0) {
-            echo "{$prefix}<{$tag}{$attributes}>\n";
-            foreach ($nodes as $node) {
-                $this->renderNode($node, $level + 1);
-            }
-            echo "{$prefix}</{$tag}>\n";
+        } else if ($element instanceof HtmlComponent) {
+            echo $ident, trim($element->content), "\n";
+        } else if ($element instanceof TextComponent) {
+            echo $ident, trim($element->content), "\n";
         } else {
-            echo "{$prefix}<{$tag}{$attributes}></{$tag}>\n";
+            $attributes = HtmlUtils::getAttributes($element);
+            $tag = $element->getTag();
+            $elements = $element->getNodes();
+
+            if (count($elements) > 0) {
+                echo "{$ident}<{$tag}{$attributes}>\n";
+                foreach ($elements as $element) {
+                    $this->renderRecursive($element, $level + 1);
+                }
+                echo "{$ident}</{$tag}>\n";
+            } else {
+                echo "{$ident}<{$tag}{$attributes}></{$tag}>\n";
+            }
         }
     }
 
@@ -86,5 +54,18 @@ class ViewRenderer
         $result = ob_get_contents();
         ob_end_clean();
         return $result;
+    }
+
+    public static function renderComponent($component)
+    {
+        $viewRenderer = new ViewRenderer();
+        $components = (array)$component;
+
+        $htmlParts = [];
+        foreach ($components as $component) {
+            $htmlParts[] = $viewRenderer->getContent($component);
+        }
+
+        return implode("\n", $htmlParts);
     }
 }

@@ -7,6 +7,7 @@ use Atom\Xaml\Component\TextComponent;
 
 class Column extends Component
 {
+    public string $field = "";
     public string $title = "";
     public string $value = "";
 
