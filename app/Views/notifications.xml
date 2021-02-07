@@ -1,5 +1,5 @@
-<div xmlns:bs="Atom.Bootstrap">
+<bs:Page xmlns:bs="Atom.Bootstrap">
     <h2>Notifications</h2>
     <hr />
 
-</div>
+</bs:Page>

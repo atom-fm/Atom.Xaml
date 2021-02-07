@@ -1,4 +1,4 @@
-<div xmlns:bs="Atom.Bootstrap">
+<bs:Page xmlns:bs="Atom.Bootstrap">
     <h2>Friends</h2>
     <hr />
 
@@ -13,4 +13,4 @@
     </bs:Repeat>
 
 
-</div>
+</bs:Page>

@@ -85,9 +85,8 @@
     </div>
 
     <main class="container">
-        <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <?php echo $content ?>
-        </div>
+        <?php echo $content ?>
+
         <!--
         <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
             <div class="lh-1">

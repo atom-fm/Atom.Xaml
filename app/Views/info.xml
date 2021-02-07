@@ -1,4 +1,4 @@
-<div xmlns:bs="Atom.Bootstrap" inherits="layouts.layout">
+<bs:Page xmlns:bs="Atom.Bootstrap" inherits="layouts.layout">
     <h2>UI Info Example</h2>
     <hr />
 
@@ -12,4 +12,4 @@
             <a class="btn btn-sm btn-primary" href="?view=index">Edit</a>
         </bs:Column>
     </bs:Table>
-</div>
+</bs:Page>

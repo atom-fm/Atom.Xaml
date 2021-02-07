@@ -1,4 +1,4 @@
-<div xmlns:bs="Atom.Bootstrap">
+<bs:Page xmlns:bs="Atom.Bootstrap">
     <h2>Delete</h2>
     <hr />
 
@@ -8,4 +8,4 @@
 
     <a class="btn btn-secondary btn-sm" href="?view=index">Back</a>
     <a class="btn btn-primary btn-sm" href="?view=index">Delete</a>
-</div>
+</bs:Page>

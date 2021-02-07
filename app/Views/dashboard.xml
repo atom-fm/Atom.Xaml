@@ -1,4 +1,4 @@
-<div xmlns:bs="Atom.Bootstrap">
+<bs:Page xmlns:bs="Atom.Bootstrap">
     <h2>Dashboard</h2>
     <hr />
 
@@ -18,4 +18,4 @@
     </bs:Table>
 
     <bs:Pagination />
-</div>
+</bs:Page>
