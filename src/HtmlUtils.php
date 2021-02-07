@@ -37,4 +37,24 @@ final class HtmlUtils
         }
         return $result;
     }
+
+    public static function mergeAttributes(array $attributes, array $extraAttribues)
+    {
+        foreach ($extraAttribues as $key => $value) {
+            if ($key === "class") {
+                $attributes[$key] = self::mergeClasses($attributes[$key], $value);
+            } else {
+                $attributes[$key] = $value;
+            }
+        }
+        return $attributes;
+    }
+
+    public static function mergeClasses($classes, $extraClasses)
+    {
+        $classList = explode(" ", $classes ?? "");
+        $extraClassList = explode(" ", $extraClasses ?? "");
+        $result = array_unique(array_merge($classList, $extraClassList));
+        return implode(" ", $result);
+    }
 }

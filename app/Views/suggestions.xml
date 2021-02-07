@@ -2,9 +2,22 @@
     <h2>Suggestions</h2>
     <hr />
 
-    <bs:Import name="Partials.panel"  />
+    <bs:Panel>
+        <bs:Entry />                
+        <bs:Entry />
+        <bs:Entry />
+        <bs:Entry />
+        <bs:Entry />
+
+        <div slot="actions">
+            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-primary">Save</button>
+        </div>
+    </bs:Panel>
 
     <bs:Import name="Partials.panel"  />
-
+    <bs:Import name="Partials.panel"  />
     <bs:Import name="Partials.panel"  />
 </div>

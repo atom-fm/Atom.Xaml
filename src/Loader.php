@@ -105,11 +105,17 @@ class Loader
             }
         } elseif ($root instanceof DOMElement) {
             $attributes = $this->getAttributes($root);
+            $slots = [];
             $nodes = [];
             foreach ($root->childNodes as $node) {
                 $newChildNode = $this->transformTree($node, $level + 1);
                 if ($newChildNode) {
-                    $nodes[] = $newChildNode;
+                    if ($newChildNode instanceof Component && $newChildNode->hasAttribute("slot")) {
+                        $slotName = $newChildNode->getAttribute("slot");
+                        $slots[$slotName] = $newChildNode;
+                    } else {
+                        $nodes[] = $newChildNode;
+                    }
                 }
             }
             $tagName = $root->tagName;
@@ -131,6 +137,10 @@ class Loader
 
                 foreach ($props as $prop => $value) {
                     $newNode->{$prop} = $value;
+                }
+
+                foreach ($slots as $slotName => $slot) {
+                    $newNode->{$slotName} = $slot;
                 }
 
                 return $newNode;

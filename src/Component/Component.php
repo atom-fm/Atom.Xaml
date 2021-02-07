@@ -35,6 +35,11 @@ class Component extends Element
         return $result;
     }
 
+    public function hasAttribute($name): bool
+    {
+        return isset($this->attributes[$name]);
+    }
+
     public function getAttribute($name)
     {
         return $this->attributes[$name] ?? "";
@@ -47,9 +52,9 @@ class Component extends Element
 
     public function getNodesOfType($classType)
     {
-        return array_filter( $this->nodes, function($item) use ($classType) {
+        return array_filter($this->nodes, function ($item) use ($classType) {
             return $item instanceof $classType;
-        }) ;
+        });
     }
 
     public function getNodes()

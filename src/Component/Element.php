@@ -4,6 +4,11 @@ namespace Atom\Xaml\Component;
 
 class Element
 {
+    // public function hasAttribute($name)
+    // {
+    //     return false;
+    // }
+
     // private $parent = null;
     // private $document = null;
     // private $context = null;

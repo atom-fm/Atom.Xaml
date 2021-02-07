@@ -2,7 +2,7 @@
 
 namespace Atom\Xaml\Component;
 
-class HtmlComponent extends TextComponent
+class HtmlComponent extends Element
 {
     public string $content;
 
