@@ -25,7 +25,7 @@ Based on XML and allows defining custom elements using PHP.
 </bs:Page>
 ```
 
-Xml definition above constructs component tree similar to following code:
+Xml definition above constructs a component tree similar to the following code:
 
 ```php
 use Atom\Bootstrap\Page;
@@ -49,7 +49,7 @@ $view = new Page("bs:Page", [], [
 ])
 ```
 
-A component is lowered to primitive elements using render method.
+A component is lowered to the primitive elements using the render method.
 
 ```php
 <?php
@@ -73,7 +73,7 @@ class Alert extends Component
 }
 ```
 
-Child components can be assigned to component properties using "slot" attribute.
+The child components can be assigned to the component properties using "slot" attribute.
 
 ```xml
 <ns:Example>
@@ -89,7 +89,7 @@ Child components can be assigned to component properties using "slot" attribute.
 </ns:Example>
 ```
 
-And use render() method to lower component to primitives when composing virtual dom.
+Use the render method to lower the component to the primitives when composing virtual dom.
 
 ```php
 <?php
@@ -141,7 +141,7 @@ Idea is to implement something like following:
 </bs:Form>
 ```
 
-3. Setting context on parent element
+3. Use the context attribute on the parent element to set default binding context for the nested elements
 
 ```xml
 <bs:Form context="{{ model }}">
@@ -150,7 +150,7 @@ Idea is to implement something like following:
 </bs:Form>
 ```
 
-4. Use convention for trivial cases
+4. Use convention for the trivial cases
 
 ```xml
 <bs:Form context="{{ model }}">
